@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strings"
 )
 
 func genTicket(cityCode string, conferenceTickets uint, remainingTickets uint, bookedTickets uint) string {
@@ -27,13 +26,11 @@ func calTicketCost(numOfTkts uint, ticketPrice float32) float32 {
 
 }
 
-func printFirstName(names []string) []string {
+func printFirstName(userData []map[string]string) []string {
 
 	var fNames []string
-
-	for _, booking := range names { // for-each loop
-		var name = strings.Fields(booking)
-		fNames = append(fNames, name[0])
+	for _, data := range userData { // for-each loop
+		fNames = append(fNames, data["firstName"])
 	}
 	return fNames
 }
@@ -68,30 +65,18 @@ func main() {
 	var remainingTickets uint = 50
 	var ticketPrice float32 = 25.22
 
-	var bookings = []string{"test1", "test2"}
-	// var userData = map[string]string{}
-
-	// fmt.Printf("conferenceName is %T, conferenceTickets is %T and remainingTickets is %T\n", conferenceName, conferenceTickets, remainingTickets)
-
-	bookings = append(bookings, "test-user")
-
-	// fmt.Println("Welcome to,", conferenceName, "booking portal")
-	// fmt.Println("Get your ticket here to attend")
+	var userData = []map[string]string{}
 
 	greetUser(conferenceName, ticketPrice, conferenceTickets, remainingTickets)
 
 	for { // infinite loop
 
-		bookings = bookingTicket(bookings, remainingTickets, conferenceTickets, ticketPrice)
+		userData, remainingTickets = bookingTicket(userData, remainingTickets, conferenceTickets, ticketPrice)
 		// checking if tickets are 0
 		if remainingTickets == 0 {
 			fmt.Println("Conference is fully booked.")
+			fmt.Printf("Booking array: %v\n", userData)
 			break
 		}
 	}
-	fmt.Printf("Booking array: %v\n", bookings)
-	// fmt.Printf("First Element: %v\n", bookings[0])
-	fmt.Printf("First Element: %v\n", bookings[0])
-	fmt.Printf("Type of Slice: %T\n", bookings)
-
 }
