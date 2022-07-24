@@ -24,7 +24,7 @@ func calTicketCost(numOfTkts uint, ticketPrice float32) float32 {
 
 }
 
-func printDetailsForAdmin(bookings []map[string]string, remainingTickets uint) {
+func printDetailsForAdmin(bookings []userData, remainingTickets uint) {
 	fmt.Printf("\n--> Booking Users are: %v\n", printFirstName(bookings))
 	fmt.Printf("--> Total num of users who booked ticket: %v\n", len(bookings)) // problem with array is, it should have predefined size
 	fmt.Printf("--> Total remaining tickets are : %v\n", remainingTickets)
@@ -38,11 +38,11 @@ func printTicket(name string, cityCode string, userTickets uint, conferenceTicke
 	fmt.Println("---------------------------------------------------")
 }
 
-func printFirstName(bookings []map[string]string) []string {
+func printFirstName(bookings []userData) []string {
 
 	var fNames []string
 	for _, data := range bookings { // for-each loop
-		fNames = append(fNames, data["firstName"])
+		fNames = append(fNames, data.firstName)
 	}
 	return fNames
 }

@@ -3,12 +3,11 @@ package main
 import (
 	"booking-app/helper"
 	"fmt"
-	"strconv"
 )
 
-func bookingTicket(bookings []map[string]string, remainingTickets uint, conferenceTickets uint, ticketPrice float32) ([]map[string]string, uint) {
+func bookingTicket(bookings []userData, remainingTickets uint, conferenceTickets uint, ticketPrice float32) ([]userData, uint) {
 
-	var userData = map[string]string{}
+	// var userData = map[string]string{}
 	userFname, userLname, city, userTickets := getUserInput()
 
 	isValidName, isValidTicket := helper.ValidationCheck(userFname, userLname, userTickets, remainingTickets)
@@ -18,10 +17,17 @@ func bookingTicket(bookings []map[string]string, remainingTickets uint, conferen
 
 		name := userFname + " " + userLname
 
-		userData["firstName"] = userFname
-		userData["lastName"] = userLname
-		userData["city"] = cityCode
-		userData["numOfTickets"] = strconv.FormatUint(uint64(userTickets), 10)
+		// userData["firstName"] = userFname
+		// userData["lastName"] = userLname
+		// userData["city"] = cityCode
+		// userData["numOfTickets"] = strconv.FormatUint(uint64(userTickets), 10)
+
+		var userData = userData{
+			firstName:    userFname,
+			lastName:     userLname,
+			city:         cityCode,
+			numOfTickets: userTickets,
+		}
 
 		bookings = append(bookings, userData)
 		remainingTickets = remainingTickets - userTickets

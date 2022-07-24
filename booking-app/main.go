@@ -4,6 +4,13 @@ import (
 	"fmt"
 )
 
+type userData struct {
+	firstName    string
+	lastName     string
+	city         string
+	numOfTickets uint
+}
+
 // ############## Main ###################
 
 func main() {
@@ -13,7 +20,8 @@ func main() {
 	var remainingTickets uint = 50
 	var ticketPrice float32 = 25.22
 
-	var bookings = []map[string]string{}
+	// var bookings = []map[string]string{}
+	var bookings = make([]userData, 0)
 
 	greetUser(conferenceName, ticketPrice, conferenceTickets, remainingTickets)
 
