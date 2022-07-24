@@ -40,6 +40,7 @@ func printTicket(name string, cityCode string, userTickets uint, conferenceTicke
 	fmt.Printf("Ticket Serial Nums are:  %v\n", genTicket(cityCode, conferenceTickets, remainingTickets, userTickets))
 	fmt.Printf("Total amount to pay: %v\n", calTicketCost(userTickets, ticketPrice))
 	fmt.Println("---------------------------------------------------")
+	wg.Done()
 }
 
 func printFirstName(bookings []userData) []string {

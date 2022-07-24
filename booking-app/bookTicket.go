@@ -34,6 +34,8 @@ func bookingTicket(bookings []userData, remainingTickets uint, conferenceTickets
 
 		// creating a new thread for printTicket
 		// remaining program will continue
+		// Adding into wait group
+		wg.Add(1)
 		go printTicket(name, cityCode, userTickets, conferenceTickets, remainingTickets, ticketPrice)
 		printDetailsForAdmin(bookings, remainingTickets)
 
@@ -44,6 +46,6 @@ func bookingTicket(bookings []userData, remainingTickets uint, conferenceTickets
 	} else {
 		fmt.Println("Entered Name and Ticket count is not correct.")
 	}
-
+	wg.Wait()
 	return bookings, remainingTickets
 }

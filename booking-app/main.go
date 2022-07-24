@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sync"
 )
 
 type userData struct {
@@ -10,6 +11,8 @@ type userData struct {
 	city         string
 	numOfTickets uint
 }
+
+var wg = sync.WaitGroup{}
 
 // ############## Main ###################
 
