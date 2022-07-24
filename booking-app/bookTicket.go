@@ -26,15 +26,9 @@ func bookingTicket(userData []map[string]string, remainingTickets uint, conferen
 		userData = append(userData, bookings)
 		remainingTickets = remainingTickets - userTickets
 
-		fmt.Println("---------------------------------------------------")
-		fmt.Printf("User %v has booked %v tickets.\n", name, userTickets)
-		fmt.Printf("Ticket Serial Nums are:  %v\n", genTicket(cityCode, conferenceTickets, remainingTickets, userTickets))
-		fmt.Printf("Total amount to pay: %v\n", calTicketCost(userTickets, ticketPrice))
-		fmt.Println("---------------------------------------------------")
+		printTicket(name, cityCode, userTickets, conferenceTickets, remainingTickets, ticketPrice)
+		printDetailsForAdmin(userData, remainingTickets)
 
-		fmt.Printf("\nBooking Users are: %v\n", printFirstName(userData))
-		fmt.Printf("Length of Array: %v\n", len(userData)) // problem with array is, it should have predefined size
-		fmt.Printf("Total remaining tickets are : %v\n", remainingTickets)
 	} else if !isValidName {
 		fmt.Println("Name entered are too short.")
 	} else if isValidTicket {

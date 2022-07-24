@@ -10,6 +10,6 @@ func GenCityCode(city string) string {
 		return cityName[:3]
 	} else {
 		padding := 3 - len(cityName)
-		return cityName + strings.Repeat("z", padding)
+		return cityName + strings.Repeat("Z", padding)
 	}
 }

@@ -26,6 +26,20 @@ func calTicketCost(numOfTkts uint, ticketPrice float32) float32 {
 
 }
 
+func printDetailsForAdmin(userData []map[string]string, remainingTickets uint) {
+	fmt.Printf("\n--> Booking Users are: %v\n", printFirstName(userData))
+	fmt.Printf("--> Total num of users who booked ticket: %v\n", len(userData)) // problem with array is, it should have predefined size
+	fmt.Printf("--> Total remaining tickets are : %v\n", remainingTickets)
+}
+
+func printTicket(name string, cityCode string, userTickets uint, conferenceTickets uint, remainingTickets uint, ticketPrice float32) {
+	fmt.Println("---------------------------------------------------")
+	fmt.Printf("User %v has booked %v tickets.\n", name, userTickets)
+	fmt.Printf("Ticket Serial Nums are:  %v\n", genTicket(cityCode, conferenceTickets, remainingTickets, userTickets))
+	fmt.Printf("Total amount to pay: %v\n", calTicketCost(userTickets, ticketPrice))
+	fmt.Println("---------------------------------------------------")
+}
+
 func printFirstName(userData []map[string]string) []string {
 
 	var fNames []string
@@ -74,8 +88,9 @@ func main() {
 		userData, remainingTickets = bookingTicket(userData, remainingTickets, conferenceTickets, ticketPrice)
 		// checking if tickets are 0
 		if remainingTickets == 0 {
-			fmt.Println("Conference is fully booked.")
+			fmt.Println("\nConference is fully booked.")
 			fmt.Printf("Booking array: %v\n", userData)
+			fmt.Println("Hence, exiting the program.")
 			break
 		}
 	}
