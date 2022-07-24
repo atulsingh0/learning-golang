@@ -32,7 +32,9 @@ func bookingTicket(bookings []userData, remainingTickets uint, conferenceTickets
 		bookings = append(bookings, userData)
 		remainingTickets = remainingTickets - userTickets
 
-		printTicket(name, cityCode, userTickets, conferenceTickets, remainingTickets, ticketPrice)
+		// creating a new thread for printTicket
+		// remaining program will continue
+		go printTicket(name, cityCode, userTickets, conferenceTickets, remainingTickets, ticketPrice)
 		printDetailsForAdmin(bookings, remainingTickets)
 
 	} else if !isValidName {
