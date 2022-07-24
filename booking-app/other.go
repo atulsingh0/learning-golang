@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func genTicket(cityCode string, conferenceTickets uint, remainingTickets uint, bookedTickets uint) string {
 
@@ -31,6 +34,7 @@ func printDetailsForAdmin(bookings []userData, remainingTickets uint) {
 }
 
 func printTicket(name string, cityCode string, userTickets uint, conferenceTickets uint, remainingTickets uint, ticketPrice float32) {
+	time.Sleep(10 * time.Second) // adding sleep to delay the output of printTicket
 	fmt.Println("---------------------------------------------------")
 	fmt.Printf("User %v has booked %v tickets.\n", name, userTickets)
 	fmt.Printf("Ticket Serial Nums are:  %v\n", genTicket(cityCode, conferenceTickets, remainingTickets, userTickets))
