@@ -6,9 +6,9 @@ import (
 	"strconv"
 )
 
-func bookingTicket(userData []map[string]string, remainingTickets uint, conferenceTickets uint, ticketPrice float32) ([]map[string]string, uint) {
+func bookingTicket(bookings []map[string]string, remainingTickets uint, conferenceTickets uint, ticketPrice float32) ([]map[string]string, uint) {
 
-	var bookings = map[string]string{}
+	var userData = map[string]string{}
 	userFname, userLname, city, userTickets := getUserInput()
 
 	isValidName, isValidTicket := helper.ValidationCheck(userFname, userLname, userTickets, remainingTickets)
@@ -18,16 +18,16 @@ func bookingTicket(userData []map[string]string, remainingTickets uint, conferen
 
 		name := userFname + " " + userLname
 
-		bookings["firstName"] = userFname
-		bookings["lastName"] = userLname
-		bookings["city"] = cityCode
-		bookings["numOfTickets"] = strconv.FormatUint(uint64(userTickets), 10)
+		userData["firstName"] = userFname
+		userData["lastName"] = userLname
+		userData["city"] = cityCode
+		userData["numOfTickets"] = strconv.FormatUint(uint64(userTickets), 10)
 
-		userData = append(userData, bookings)
+		bookings = append(bookings, userData)
 		remainingTickets = remainingTickets - userTickets
 
 		printTicket(name, cityCode, userTickets, conferenceTickets, remainingTickets, ticketPrice)
-		printDetailsForAdmin(userData, remainingTickets)
+		printDetailsForAdmin(bookings, remainingTickets)
 
 	} else if !isValidName {
 		fmt.Println("Name entered are too short.")
@@ -37,5 +37,5 @@ func bookingTicket(userData []map[string]string, remainingTickets uint, conferen
 		fmt.Println("Entered Name and Ticket count is not correct.")
 	}
 
-	return userData, remainingTickets
+	return bookings, remainingTickets
 }
