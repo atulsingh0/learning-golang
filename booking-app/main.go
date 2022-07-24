@@ -69,6 +69,7 @@ func main() {
 	var ticketPrice float32 = 25.22
 
 	var bookings = []string{"test1", "test2"}
+	// var userData = map[string]string{}
 
 	// fmt.Printf("conferenceName is %T, conferenceTickets is %T and remainingTickets is %T\n", conferenceName, conferenceTickets, remainingTickets)
 
@@ -81,7 +82,7 @@ func main() {
 
 	for { // infinite loop
 
-		bookingTicket(bookings, remainingTickets, conferenceTickets, ticketPrice)
+		bookings = bookingTicket(bookings, remainingTickets, conferenceTickets, ticketPrice)
 		// checking if tickets are 0
 		if remainingTickets == 0 {
 			fmt.Println("Conference is fully booked.")

@@ -5,7 +5,8 @@ import (
 	"fmt"
 )
 
-func bookingTicket(bookings []string, remainingTickets uint, conferenceTickets uint, ticketPrice float32) {
+func bookingTicket(bookings []string, remainingTickets uint, conferenceTickets uint, ticketPrice float32) []string {
+
 	userFname, userLname, city, userTickets := getUserInput()
 
 	isValidName, isValidTicket := helper.ValidationCheck(userFname, userLname, userTickets, remainingTickets)
@@ -33,4 +34,5 @@ func bookingTicket(bookings []string, remainingTickets uint, conferenceTickets u
 		fmt.Println("Entered Name and Ticket count is not correct.")
 	}
 
+	return bookings
 }
