@@ -8,6 +8,7 @@ import (
 
 func main() {
 
+	fmt.Println("This is an infinite scanner")
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for scanner.Scan() { // scan infinitely
