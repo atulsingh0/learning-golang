@@ -16,3 +16,6 @@
 
 # Executable files
 booking-app/booking-app
+
+# Other file
+*.log
