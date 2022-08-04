@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func studentInfo(){
+func studentInfo() {
 	fmt.Print("\nEnter the Student Name: ")
 	reader := bufio.NewReader(os.Stdin)
 	name, _ := reader.ReadString('\n') // ignoring the returned error
@@ -14,8 +14,7 @@ func studentInfo(){
 	fmt.Println("Student Name: ", name)
 }
 
-
-func main(){
+func main() {
 
 	fmt.Println("Welcome to Grading System")
 	fmt.Println("=========================")
