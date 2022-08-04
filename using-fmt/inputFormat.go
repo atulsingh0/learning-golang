@@ -6,17 +6,18 @@ func main() {
 
 	fmt.Println("welcome to input formatting")
 
-	/*
-		%v - default format
-		%s - string
-		%d - decimal
-		%f - floats
-		%g - floating-point numbers
-		%b - binary numbers
-		%o - octal numbers
-		%x - Hexa decimal
-		%t - boolean value
-		%c - ascii char
+	/*  https://pkg.go.dev/fmt
+
+	%v - default format
+	%s - string
+	%d - decimal
+	%f - floats
+	%g - floating-point numbers
+	%b - binary numbers
+	%o - octal numbers
+	%x - Hexa decimal
+	%t - boolean value
+	%c - ascii char
 	*/
 
 	var id int = 23
