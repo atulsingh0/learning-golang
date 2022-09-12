@@ -43,4 +43,39 @@ func main() {
 	sv.IncrementMajorVer()
 	fmt.Println("Ref by pointer:", sv.String())
 
+	// Aliase Function
+	func() {
+		fmt.Println("\nHey there, I am from Alias world")
+	}()
+
+	// Variable as function
+	greet := func() {
+		fmt.Println("Hello there, How you doing??")
+	}
+	// calling var functon
+	greet()
+
+	// Variable function with arguement
+	ola := func(name string) {
+		fmt.Printf("Ola! %v, How you doing??\n", name)
+	}
+
+	ola("Atul")
+
+	// calling from math expression
+	addExp := sm.MathExp()
+
+	fmt.Println("Math Expression:", addExp(2, 4))
+
+	// calling stateful func
+
+	p1 := sm.PowerOfTwo()
+
+	value := p1()
+	fmt.Println(value)
+	value = p1()
+	fmt.Println(value)
+	value = p1()
+	fmt.Println(value)
+
 }
