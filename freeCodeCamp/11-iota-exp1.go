@@ -4,7 +4,7 @@ import "fmt"
 
 const (
 	_  = iota             // ignore value 0
-	KB = 1 << (10 * iota) // bitwise shift of bytes
+	KB = 1 << (10 * iota) // bitwise shift of bytes ==> 1 << 20
 	MB
 	GB
 	TB
