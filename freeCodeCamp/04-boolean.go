@@ -13,4 +13,18 @@ func main() {
 	var k bool // default value is false
 	fmt.Printf("%v, %T\n", k, k)
 
+	var (
+		alpha = true
+		beta  = false
+		gamma = true
+	)
+
+	fmt.Println(alpha, beta, gamma)
+
+	fmt.Println(!alpha)        // Negation
+	fmt.Println(alpha && beta) // and operation
+	fmt.Println(alpha || beta) // Or operation
+
+	fmt.Println(alpha == gamma) // comparison
+
 }
