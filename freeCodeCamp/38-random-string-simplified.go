@@ -25,5 +25,9 @@ func randomString(num int) string {
 }
 
 func main() {
-	fmt.Println(randomString(32))
+
+	// Generating 5 32-char random string
+	for i := 1; i <= 5; i++ {
+		fmt.Printf("Random Number %v: %v\n", i, randomString(32))
+	}
 }
