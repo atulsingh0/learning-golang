@@ -10,12 +10,16 @@ import (
 
 func main() {
 
-	if dirs, err := os.ReadDir("."); err != nil {
+	dirName := "/tmp"
+
+	if dirs, err := os.ReadDir(dirName); err != nil {
 		fmt.Println(err)
 	} else {
-		fmt.Println("Name", "IsDir")
+		fmt.Println("Directory:", dirName, "\n")
+		fmt.Println("IsDir", "\t\t\t", "Name")
+		fmt.Println("------------------------")
 		for _, data := range dirs {
-			fmt.Println(data.Name(), data.IsDir())
+			fmt.Println(data.IsDir(), "\t\t\t", data.Name())
 		}
 	}
 }
