@@ -1,16 +1,18 @@
 package main
 
+import "fmt"
+
 func main() {
 
 	for i := 0; i < 10; i++ {
-		go Square(i)
+		go fmt.Print(" S", Square(i))
 	}
 
 	for i := 0; i < 10; i++ {
-		go Cube(i)
+		go fmt.Print(" C", Cube(i))
 	}
-	select {}
-
+	// Wait for an input
+	fmt.Scanln()
 }
 
 func Square(n int) int {
