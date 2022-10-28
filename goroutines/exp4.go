@@ -2,34 +2,29 @@ package main
 
 import (
 	"fmt"
-	"sync"
 	"time"
 )
 
 func main() {
 
-	// For loop
 	start := time.Now()
-	for i := 1; i <= 10; i++ {
-		getSquare(i)
+	for i := 0; i < 10; i++ {
+		getSquare(i) // it will not print any output
 	}
-	fmt.Println("\nTotal Time Taken is standard processing:", time.Since(start))
+	fmt.Println("Total Time Taken (if process in seq):", time.Since(start))
 
+	// Processing via Go Routine
 	start = time.Now()
-	var wg sync.WaitGroup
-	for i := 1; i <= 10; i++ {
-		wg.Add(1)
-		go func(x int) {
-			defer wg.Done()
-			getSquare(x)
-		}(i)
+
+	for i := 0; i < 10; i++ {
+		go getSquare(i) // it will not print any output
 	}
-	wg.Wait()
-	fmt.Println("\nTotal Time Taken is standard processing:", time.Since(start))
+	fmt.Println("Total Time Taken (if process via go routines):", time.Since(start))
+	time.Sleep(1 * time.Second)
 
 }
 
-func getSquare(n int) {
-	time.Sleep(time.Second * 1)
-	fmt.Print(n*n, " ")
+func getSquare(no int) int {
+	time.Sleep(1 * time.Second)
+	return no * no
 }
