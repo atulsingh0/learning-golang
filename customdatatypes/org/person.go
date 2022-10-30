@@ -9,15 +9,53 @@ type Identifiable interface {
 	ID() string
 }
 
-type Person struct {
+type Name struct {
 	firstName string
 	lastNmae  string
-	TwitterHandler
 }
 
-type Handler struct {
-	handle TwitterHandler
-	name   string
+type Person struct {
+	Name
+	TwitterHandler
+	Identifiable
+}
+
+type Employee struct {
+	Name
+}
+
+type sin string
+
+func NewSIN(val string) Identifiable {
+	return sin(val)
+}
+
+func (s sin) ID() string {
+	return string(s)
+}
+
+func (s *sin) Country() string {
+	return "Canada"
+}
+
+type eusin struct {
+	id      string
+	country string
+}
+
+func NewEUSIN(val, country string) Identifiable {
+	return eusin{
+		id:      val,
+		country: country,
+	}
+}
+
+func (e eusin) ID() string {
+	return e.id
+}
+
+func (e *eusin) Country() string {
+	return e.country
 }
 
 type TwitterHandler string
@@ -28,19 +66,22 @@ func (th TwitterHandler) RedirectUrl() string {
 	return fmt.Sprintf("https://www.twitter.com/%s", cleanHandler)
 }
 
-func NewPerson(firstName, lastNmae string) *Person {
-	return &Person{
-		firstName: firstName,
-		lastNmae:  lastNmae,
+func NewPerson(firstName, lastNmae string, id Identifiable) Person {
+	return Person{
+		Name: Name{
+			firstName: firstName,
+			lastNmae:  lastNmae,
+		},
+		Identifiable: id,
 	}
 }
 
 func (p *Person) ID() string {
-	return "1234"
+	return fmt.Sprintf("%s", p.Identifiable.ID())
 }
 
-func (p *Person) FullName() string {
-	return fmt.Sprintf("%s %s", p.firstName, p.lastNmae)
+func (n *Name) FullName() string {
+	return fmt.Sprintf("%s %s", n.firstName, n.lastNmae)
 }
 
 func (p *Person) SetTwitter(handler TwitterHandler) error {
