@@ -41,6 +41,6 @@ func main() {
 	fmt.Printf("%T\n", bt)  // bytes are int8
 
 	fmt.Println()
-	fmt.Printf("%v\n", string(bt))  // convert byte array to strings
+	fmt.Printf("%v\n", string(bt)) // convert byte array to strings
 
 }
