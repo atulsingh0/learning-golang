@@ -7,18 +7,23 @@ func main() {
 	r := [3]rune{'a', 'b', 'c'}
 	s := []string{"x", "y", "z"}
 
-	fmt.Printf("%v\n", r)  // print the runes
-	fmt.Printf("%#v\n", r) // fancy print with the details (go styles)
+	fmt.Println("\nList of Runes:")
+	fmt.Println("-----")
+
+	fmt.Printf("%v\n", r)  // print the runes (char codes)
+	fmt.Printf("%#v\n", r) // fancy print with the details (go styles, char codes)
 	fmt.Printf("%T\n", r)  // print type
 	fmt.Printf("%q\n", r)  // quoted chars
 
-	fmt.Println()
+	fmt.Println("\nList of Strings:")
+	fmt.Println("-----")
 
 	fmt.Printf("%v\n", s)  // string array
 	fmt.Printf("%#v\n", s) // go style string array
 	fmt.Printf("%T\n", s)  // data type
 
-	fmt.Println()
+	fmt.Println("\nMap of Strings:Int :")
+	fmt.Println("-----")
 
 	m := map[string]int{"a": 23, "b": 29}
 
@@ -26,14 +31,16 @@ func main() {
 	fmt.Printf("%#v\n", m) // go style map
 	fmt.Printf("%T\n", m)  // data type
 
-	fmt.Println()
+	fmt.Println("\nString :")
+	fmt.Println("-----")
 
 	str := "a lazy fox jump over the brown fence"
 	fmt.Printf("%v\n", str)
 	fmt.Printf("%#v\n", str)
 	fmt.Printf("%T\n", str)
 
-	fmt.Println()
+	fmt.Println("\nBytes of Strings:")
+	fmt.Println("-----")
 
 	bt := []byte(str)       // convert string to bytes
 	fmt.Printf("%v\n", bt)  // int8 (byte) for each character
