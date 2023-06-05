@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
 
@@ -27,4 +30,21 @@ func main() {
 	// outer out
 	fmt.Println(out)
 
+	_ = readFile("./01-hello.go")
+
+}
+
+func readFile(name string) error {
+
+	// use of return
+	f, err := os.Open(name)
+	if err != nil {
+		return err
+	}
+	d, err := f.Stat()
+	if err != nil {
+		return err
+	}
+	fmt.Println(d.Name(), d.Size())
+	return nil
 }
