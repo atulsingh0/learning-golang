@@ -4,9 +4,9 @@ import "github.com/gin-gonic/gin"
 
 func main() {
 
-	r := gin.Default()
+	rt := gin.Default()
 
-	r.GET("/hi/*rest", func(c *gin.Context) {
+	rt.GET("/hi/*rest", func(c *gin.Context) {
 
 		cookies := c.Request.Cookies()
 		c.IndentedJSON(200, gin.H{
@@ -20,5 +20,5 @@ func main() {
 		})
 	})
 
-	r.Run(":3000")
+	rt.Run(":3000")
 }
