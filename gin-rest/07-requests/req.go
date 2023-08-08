@@ -11,7 +11,9 @@ func main() {
 		cookies := c.Request.Cookies()
 		c.IndentedJSON(200, gin.H{
 			"header":   c.Request.Header,
+			"url":      c.Request.URL,
 			"query":    c.Request.URL.Query(),
+			"path":     c.Request.URL.Path,
 			"params":   c.Params,
 			"body":     c.Request.Body,
 			"method":   c.Request.Method,
