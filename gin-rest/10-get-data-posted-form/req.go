@@ -18,8 +18,9 @@ func main() {
 	rt.POST("/users", func(c *gin.Context) {
 
 		c.IndentedJSON(200, gin.H{
-			"User": c.PostForm("name"),
-			"Age":  c.PostForm("age"),
+			"User":  c.PostForm("name"),
+			"Age":   c.PostForm("age"),
+			"Group": c.DefaultPostForm("group", "student"),
 		})
 	})
 
