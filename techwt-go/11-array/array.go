@@ -33,5 +33,9 @@ func main() {
 		sum1 = sum1 + arr[i]
 	}
 	fmt.Println("total:", sum1)
-
 }
+
+curl --request GET \
+--url "https://api.snyk.com/rest/orgs/844e0371-ef50-48c1-a0d1-1dbd652b2982/projects?version=2024-06-10" \
+--header "Content-Type: application/vnd.api+json" \
+--header "Authorization: token ${SYNK_API_TOKEN}"
