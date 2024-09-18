@@ -1,0 +1,18 @@
+services:
+  mq:
+    image: rabbitmq:3.13.7-management
+    ports:
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_VHOST: "rmqvhost"
+      RABBITMQ_DEFAULT_USER: "rmquser"
+      RABBITMQ_DEFAULT_PASS: "rmqpassword"
+      RABBITMQ_ERL_COOKIE: "yeHaiCookieMereYar"
+#    volumes:
+#      - ./mq_data:/var/lib/rabbitmq/mnesia
+    networks:
+      - mq_net
+
+networks:
+  mq_net:
+    driver: bridge
