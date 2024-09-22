@@ -2,14 +2,14 @@ services:
   mq:
     image: rabbitmq:3.13.7-management
     ports:
+      - 5672:5672
       - 15672:15672
-    environment:
-      RABBITMQ_DEFAULT_VHOST: "rmqvhost"
-      RABBITMQ_DEFAULT_USER: "rmquser"
-      RABBITMQ_DEFAULT_PASS: "rmqpassword"
-      RABBITMQ_ERL_COOKIE: "yeHaiCookieMereYar"
-#    volumes:
-#      - ./mq_data:/var/lib/rabbitmq/mnesia
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq      -
     networks:
       - mq_net
 

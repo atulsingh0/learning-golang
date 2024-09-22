@@ -20,3 +20,7 @@ booking-app/booking-app
 # Other file
 *.log
 log.txt
+
+
+# other
+mq_data
