@@ -1,12 +1,12 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"os"
 	rm "rmq-go/common"
 	q "rmq-go/queue"
 	"rmq-go/sender"
-	"strings"
+	"strconv"
 )
 
 var (
@@ -25,6 +25,12 @@ func init() {
 }
 
 func main() {
+	n, err := strconv.Atoi(os.Args[1])
+	if err != nil {
+		printUsage()
+		os.Exit(1)
+	}
+
 	rmq := rm.NewRabbitMQ(rm.Config{
 		Host:     "localhost",
 		Port:     "5672",
@@ -34,7 +40,7 @@ func main() {
 	})
 
 	qname := "test-Queue"
-	err := rm.Connect(rmq)
+	err = rm.Connect(rmq)
 	defer rm.CloseConnection(rmq)
 	rm.FailOnError(err, "Failed to connect to RabbitMQ")
 
@@ -47,17 +53,26 @@ func main() {
 	rm.FailOnError(err, "Failed to declare a queue")
 
 	// We set the payload for the message.
-	// Reading the arguments from the command line
-	body := strings.Join(os.Args[1:], " ")
-	if body == "" {
-		body = "Golang is awesome"
+	// sending the random generated message
+	fmt.Println("input msgs: ", n)
+	for i := 0; i < n; i++ {
+		j := i
+		if j > 20 {
+			j = i % 20
+		}
+		j++
+		err = sender.Publish(rmq, qname, rm.RandomString(j))
+		//rm.FailOnError(err, "Failed to publish a message: "+inpts[i])
+		//log.Printf(" [x] Congrats, sending message: %s", inpts[i])
 	}
-	err = sender.Publish(rmq, qname, body)
 	// If there is an error publishing the message, a log will be displayed in the terminal.
-	rm.FailOnError(err, "Failed to publish a message")
-	log.Printf(" [x] Congrats, sending message: %s", body)
 
-	//msg, err := rmq.fetchMsgQueue()
+	//msg, err := rmq.fetchMsgQueu
+	//e()
 	//failOnError(err, "Failed to fetch message")
 	//log.Printf(" [x] Congrats, received message: %s", msg)
+}
+
+func printUsage() {
+	fmt.Println("Usage: go run main.go <number of messages>")
 }
