@@ -14,7 +14,9 @@ func main() {
 	}
 	defer f.Close()
 
+	// Set output of logs to the file
 	log.SetOutput(f)
+	// Set flags for log
 	log.SetFlags(log.LstdFlags | log.Lmicroseconds | log.Lshortfile)
 
 	log.Println("Welcome to the playground")

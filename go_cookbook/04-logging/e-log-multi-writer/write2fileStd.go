@@ -15,6 +15,7 @@ func main() {
 	}
 	defer f.Close()
 
+	// Create a writer which writes to Stdout and a file
 	writer := io.MultiWriter(f, os.Stdout)
 	log.SetOutput(writer)
 	log.SetFlags(log.LstdFlags | log.Lmicroseconds | log.Lshortfile)
